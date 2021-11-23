@@ -15,6 +15,7 @@ import {
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { Octicons, Ionicons } from "@expo/vector-icons";
+import { ScrollView } from "react-native-gesture-handler";
 
 const DATA = [
   {
@@ -57,151 +58,157 @@ export default function Home() {
     bold: require("../assets/fonts/Raleway-Bold.ttf"),
   });
   const renderItem = ({ item }) => <Item title={item.title} id={item.id} />;
-  return (
-    <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
-        }}
-      >
-        <AntDesign name="menu-fold" size={24} color="#212957" />
-        <SimpleLineIcons name="bell" size={24} color="#212957" />
-      </View>
-      <StatusBar style="auto" />
-      <View style={{ paddingHorizontal: 20 }}>
-        <Text
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <ScrollView style={styles.container}>
+       <View style={{paddingVertical: StatusBar.currentHeight || 0,}}>
+       <View
           style={{
-            fontSize: 30,
-            color: "#212957",
-            fontFamily: "bold",
-            paddingTop: 20,
-          }}
-        >
-          You want{"\n"}to diving?
-        </Text>
-      </View>
-      <View style={styles.sectionStyle}>
-        <Octicons
-          style={styles.iconStyle}
-          name="search"
-          size={24}
-          color="black"
-        />
-        <TextInput
-          placeholder="Search for something here..."
-          style={styles.input}
-        />
-      </View>
-
-      <View style={{ paddingHorizontal: 0 }}>
-        <FlatList
-          data={DATA}
-          horizontal={true}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          showsHorizontalScrollIndicator={false}
-        />
-      </View>
-      <View style={styles.card}>
-        <ImageBackground
-          source={require("../assets/images/diving.jpg")}
-          //   resizeMode="contain"
-          style={{
-            width: Dimensions.width,
-            height: 350,
-            padding: 20,
+            flexDirection: "row",
             justifyContent: "space-between",
+            paddingHorizontal: 20,
           }}
-          imageStyle={{ borderRadius: 20 }}
         >
-          <View
+          <AntDesign name="menu-fold" size={24} color="#212957" />
+          <SimpleLineIcons name="bell" size={24} color="#212957" />
+        </View>
+        <StatusBar style="auto" />
+        <View style={{ paddingHorizontal: 20 }}>
+          <Text
             style={{
-              flexDirection: "row",
+              fontSize: 30,
+              color: "#212957",
+              fontFamily: "bold",
+              paddingTop: 20,
+            }}
+          >
+            You want{"\n"}to diving?
+          </Text>
+        </View>
+        <View style={styles.sectionStyle}>
+          <Octicons
+            style={styles.iconStyle}
+            name="search"
+            size={24}
+            color="black"
+          />
+          <TextInput
+            placeholder="Search for something here..."
+            style={styles.input}
+          />
+        </View>
+
+        <View style={{ paddingHorizontal: 0 }}>
+          <FlatList
+            data={DATA}
+            horizontal={true}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={styles.card}>
+          <ImageBackground
+            source={require("../assets/images/diving.jpg")}
+            //   resizeMode="contain"
+            style={{
+              width: Dimensions.width,
+              height: 350,
+              padding: 20,
               justifyContent: "space-between",
             }}
+            imageStyle={{ borderRadius: 20 }}
           >
             <View
               style={{
-                backgroundColor: "white",
-                alignSelf: "flex-start",
-                padding: 10,
-                paddingHorizontal: 15,
-                alignItems: "center",
-                borderRadius: 30,
                 flexDirection: "row",
+                justifyContent: "space-between",
               }}
             >
-              <MaterialCommunityIcons
-                name="clock-outline"
-                size={24}
-                color="black"
-              />
-              <Text
+              <View
                 style={{
-                  color: "#212957",
-                  fontSize: 14,
-                  paddingLeft: 10,
-                  fontFamily: "bold",
+                  backgroundColor: "white",
+                  alignSelf: "flex-start",
+                  padding: 10,
+                  paddingHorizontal: 15,
+                  alignItems: "center",
+                  borderRadius: 30,
+                  flexDirection: "row",
                 }}
               >
-                Opens in 24mins
-              </Text>
+                <MaterialCommunityIcons
+                  name="clock-outline"
+                  size={24}
+                  color="black"
+                />
+                <Text
+                  style={{
+                    color: "#212957",
+                    fontSize: 14,
+                    paddingLeft: 10,
+                    fontFamily: "bold",
+                  }}
+                >
+                  Opens in 24mins
+                </Text>
+              </View>
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 50,
+                  backgroundColor: "white",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <AntDesign name="heart" size={18} color="#dc143c" />
+              </View>
             </View>
             <View
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: 50,
-                backgroundColor: "white",
-                justifyContent: "center",
-                alignItems: "center",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
               }}
             >
-              <AntDesign name="heart" size={18} color="#dc143c" />
-            </View>
-          </View>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <View>
+              <View>
+                <View>
+                  <Text
+                    style={{ color: "white", fontSize: 24, fontFamily: "bold" }}
+                  >
+                    Nyelam Laut
+                  </Text>
+                </View>
+                <View style={{ display: "flex", flexDirection: "row" }}>
+                  <Ionicons
+                    name="md-location-sharp"
+                    style={{ paddingRight: 10 }}
+                    size={20}
+                    color="white"
+                  />
+                  <Text style={{ color: "white", fontFamily: "regular" }}>
+                    Pelabuhan Ratu
+                  </Text>
+                </View>
+              </View>
+
               <View>
                 <Text
-                  style={{ color: "white", fontSize: 24, fontFamily: "bold" }}
+                  style={{ color: "white", fontSize: 30, fontFamily: "bold" }}
                 >
-                  Nyelam Laut
-                </Text>
-              </View>
-              <View style={{ display: "flex", flexDirection: "row" }}>
-                <Ionicons
-                  name="md-location-sharp"
-                  style={{ paddingRight: 10 }}
-                  size={20}
-                  color="white"
-                />
-                <Text style={{ color: "white", fontFamily: "regular" }}>
-                  Pelabuhan Ratu
+                  $120
                 </Text>
               </View>
             </View>
-
-            <View>
-              <Text
-                style={{ color: "white", fontSize: 30, fontFamily: "bold" }}
-              >
-                $120
-              </Text>
-            </View>
-          </View>
-        </ImageBackground>
-      </View>
-    </View>
-  );
+          </ImageBackground>
+        </View>
+       </View>
+      </ScrollView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -210,8 +217,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     // paddingHorizontal: 20,
     backgroundColor: "white",
-    marginTop: StatusBar.currentHeight || 0,
-    marginBottom: StatusBar.currentHeight || 0,
+    
+
+    
   },
   input: {
     padding: 10,
@@ -256,7 +264,7 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 20,
     marginHorizontal: 20,
-    marginTop: 30
+    marginTop: 30,
   },
   image: {
     width: 50,
