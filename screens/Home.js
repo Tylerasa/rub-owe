@@ -243,7 +243,7 @@ export default function Home() {
         >
           <Text>Open ActionSheet</Text>
         </TouchableOpacity>
-        <ActionSheet CustomHeaderComponent={<CustomHeader/>} headerAlwaysVisible={true} containerStyle={{borderTopRightRadius: 30, borderTopLeftRadius: 30}} overlayColor={"#97D0EF"} ref={actionSheetRef}>
+        <ActionSheet gestureEnabled={true} CustomHeaderComponent={<CustomHeader/>} headerAlwaysVisible={true} containerStyle={{borderTopRightRadius: 30, borderTopLeftRadius: 30}} overlayColor={"#97D0EF"} ref={actionSheetRef}>
           <View>
             <Sheet />
           </View>

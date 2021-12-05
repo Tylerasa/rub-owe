@@ -1,23 +1,29 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 
 export default function Sheet() {
   let diving = ["Solo Diving", "Team Diving", "Family Diving"];
   return (
-    <View style={{ paddingHorizontal: 20 }}>
+    <ScrollView style={{ paddingHorizontal: 20 }}>
+      <View style={{ flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between" }}>
+        <Text
+          style={{
+            fontSize: 35,
+            color: "#212957",
+            fontFamily: "bold",
+            paddingTop: 20,
+            flex: 5
+          }}
+        >
+          Click the diving features you want
+        </Text>
+        <Image style={{width: 100, height: 80, flex: 2, resizeMode: "center"}} source={require("../assets/images/fishes.png")} />
+      </View>
       <Text
         style={{
-          fontSize: 30,
           color: "#212957",
-          fontFamily: "bold",
-          paddingTop: 20,
-        }}
-      >
-        Click the diving features you want
-      </Text>
-      <Text
-        style={{
-          color: "#212957",
+          fontSize: 16,
+          marginTop: 10
         }}
       >
         Choose the type of diving you want to enjoy later
@@ -29,7 +35,8 @@ export default function Sheet() {
               key={i}
               style={{
                 height: 120,
-                backgroundColor: i==0? "#97D0EF": i==1 ? "#F2F4FA" : "#ffeee7",
+                backgroundColor:
+                  i == 0 ? "#97D0EF" : i == 1 ? "#F2F4FA" : "#ffeee7",
                 borderRadius: 20,
                 display: "flex",
                 flexDirection: "row",
@@ -75,7 +82,7 @@ export default function Sheet() {
           );
         })}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
