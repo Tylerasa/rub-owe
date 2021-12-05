@@ -24,8 +24,6 @@ import rough from "roughjs/bundled/rough.esm";
 import Sheet from "../components/Sheet";
 import CustomHeader from "../components/CustomHeader";
 
-
-
 const actionSheetRef = createRef();
 
 const DATA = [
@@ -68,7 +66,7 @@ const Item = ({ title, id }) => (
 //   )
 // }
 
-export default function Home() {
+export default function Home({navigation}) {
   let [fontsLoaded] = useFonts({
     regular: require("../assets/fonts/Raleway-Regular.ttf"),
     light: require("../assets/fonts/Raleway-Light.ttf"),
@@ -236,14 +234,17 @@ export default function Home() {
             </ImageBackground>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            actionSheetRef.current?.setModalVisible();
-          }}
+                      <TouchableOpacity onPress={()=> navigation.navigate("Booking")}>
+                        <Text>hello</Text>
+                        </TouchableOpacity>
+        <ActionSheet
+          gestureEnabled={true}
+          CustomHeaderComponent={<CustomHeader />}
+          headerAlwaysVisible={true}
+          containerStyle={{ borderTopRightRadius: 30, borderTopLeftRadius: 30 }}
+          overlayColor={"#97D0EF"}
+          ref={actionSheetRef}
         >
-          <Text>Open ActionSheet</Text>
-        </TouchableOpacity>
-        <ActionSheet gestureEnabled={true} CustomHeaderComponent={<CustomHeader/>} headerAlwaysVisible={true} containerStyle={{borderTopRightRadius: 30, borderTopLeftRadius: 30}} overlayColor={"#97D0EF"} ref={actionSheetRef}>
           <View>
             <Sheet />
           </View>

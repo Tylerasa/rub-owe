@@ -11,6 +11,7 @@ import {
   Entypo,
   FontAwesome5,
 } from "@expo/vector-icons";
+import Booking from "../screens/Booking";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -97,6 +98,11 @@ const HomeScreen = () => {
         options={{ headerShown: false }}
         name="HomeScreen"
         component={Home}
+      />
+       <Stack.Screen
+        options={{ headerShown: false }}
+        name="Booking"
+        component={Booking}
       />
     </Stack.Navigator>
   );
