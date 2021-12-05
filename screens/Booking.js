@@ -21,32 +21,7 @@ import Calendar from 'react-native-ep-calendar'
 export default function Booking() {
     return (
         <View>
-               <Calendar
-                //   markerTypes={[missMarker]}
-                //   markedDates={[...checkedMarker, ...missedMarkers]}
-                  darkTheme={{
-                    markerColor: "#ff00ff",
-                    markerTextColor: "#224009",
-                  }}
-                  lightTheme={{
-                    markerColor: "#ff00ff",
-                    markerTextColor: "#224009",
-                  }}
-                //   onMonthChangeListener={(
-                //     previousMonth,
-                //     previousYear,
-                //     month,
-                //     year,
-                //   ) => {
-                //     getTimelineData(
-                //       habit,
-                //       month,
-                //       year,
-                //       setCheckedMarker,
-                //       setMissedMarker,
-                //     );
-                //   }}
-                />  
+               
         </View>
     )
 }
